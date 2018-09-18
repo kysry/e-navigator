@@ -1,7 +1,6 @@
 <h1>ユーザー情報</h1>
 
-  <% if params[:name] %>
-  <% else %>
+  <% if @user.name.blank? %>
   <% flash.now[:danger] = 'プロフィールを作成してください。' %>
   <% end %>
 
