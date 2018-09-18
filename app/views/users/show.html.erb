@@ -2,7 +2,7 @@
 
   <% if params[:name] %>
   <% else %>
-  <% flash[:danger] = 'プロフィールを作成してください。' %>
+  <% flash.now[:danger] = 'プロフィールを作成してください。' %>
   <% end %>
 
     <table class="table table-bordered table-hover">
