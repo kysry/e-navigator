@@ -1,11 +1,33 @@
 <h1>ユーザー情報</h1>
 
-  <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= @user.email %>
-      </h1>
-    </section>
-  </aside>
-</div>
+  <% if params[:name] %>
+  <% else %>
+  <% flash[:danger] = 'プロフィールを作成してください。' %>
+  <% end %>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th><div class="text-center">名前</div></th>
+          <th><div class="text-center">Email</div></th>
+          <th><div class="text-center">年齢</div></th>
+          <th><div class="text-center">性別</div></th>
+          <th><div class="text-center">学校名</div></th>
+        </tr>
+      </thead>
+
+      </tbody>
+        <tr>
+        <td><div class="text-center"><%= @user.name %></div></td>
+        <td><div class="text-center"><%= @user.email %></div></td>
+          <% begin %>
+            <td><div class="text-center">
+              <%= (Date.today.strftime("%Y%m%d").to_i - @user.birthday.strftime("%Y%m%d").to_i) / 10000 %>
+            </div></td>
+          <% rescue %>
+          <% end %>
+        <td><div class="text-center"><%= @user.gender %></div></td>
+        <td><div class="text-center"><%= @user.school %></div></td>
+        </tr>
+      </tbody>
+    </table>

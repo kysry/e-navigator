@@ -1,4 +1,3 @@
-<% provide(:title, "ログイン") %>
 <h1>ログイン</h1>
 
 <div class="row">
@@ -14,6 +13,8 @@
       <%= f.submit "ログイン", class: "btn btn-primary" %>
     <% end %>
 
-    <p>ユーザー登録をしていない場合、<%= link_to "ユーザー登録をする。", signup_path %></p>
+<br>
+
+    <%= link_to "ユーザー登録", signup_path, class: "btn btn-info" %>
   </div>
 </div>
