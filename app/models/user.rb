@@ -7,4 +7,10 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   enum gender: { male: 0, female: 1 }
+
+  def age
+    return if birthday.blank?
+    (Date.today.strftime("%Y%m%d").to_i - birthday.strftime("%Y%m%d").to_i) / 10000
+  end
+
 end
