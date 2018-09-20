@@ -1,8 +1,5 @@
-<h1>ユーザー情報</h1>
+<h1>マイプロフィール</h1>
 
-  <% if @user.name.blank? %>
-  <% flash.now[:danger] = 'プロフィールを作成してください。' %>
-  <% end %>
 
     <table class="table table-bordered table-hover">
       <thead>
@@ -19,13 +16,7 @@
         <tr>
         <td><div class="text-center"><%= @user.name %></div></td>
         <td><div class="text-center"><%= @user.email %></div></td>
-          <% if @user.birthday.blank? %>
-            <td><div class="text-center"></div></td>
-          <% else %>
-            <td><div class="text-center">
-              <%= (Date.today.strftime("%Y%m%d").to_i - @user.birthday.strftime("%Y%m%d").to_i) / 10000 %>
-            </div></td>
-          <% end %>
+        <td><div class="text-center"><%= @user.age %></div></td>
         <td><div class="text-center"><%= @user.gender %></div></td>
         <td><div class="text-center"><%= @user.school %></div></td>
         </tr>

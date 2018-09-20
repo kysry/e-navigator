@@ -3,13 +3,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    user = User.find_by(email: session_params[:email.downcase])
+    if user && user.authenticate(session_params[:password])
       log_in user
       redirect_back_or user
     else
       flash.now[:danger] = 'メールアドレスまたはパスワードが正しくありません。'
-      render 'new'
+      render :new
     end
   end
 
@@ -17,4 +17,11 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
+
+  private
+
+    def session_params
+      params.require(:session).permit(:email, :password)
+    end
+
 end

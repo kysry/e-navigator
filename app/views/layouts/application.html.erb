@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>ENavigator</title>
@@ -11,15 +12,12 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-        <% end %>
         <%= link_to "e-navigator", current_user, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <% if logged_in? %>
               <li><%= link_to "ユーザー一覧", users_path %></li>
-                <li><%= link_to "プロフィール", current_user %></li>
+                <li><%= link_to "マイプロフィール", current_user %></li>
                 <li><%= link_to "プロフィール作成", edit_user_path(current_user) %></li>
                 <li>
                   <%= link_to "ログアウト", logout_path, method: :delete %>
@@ -32,6 +30,9 @@
         </div>
       </header>
       <div class="container">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
         <%= yield %>
       </div>
     </body>
