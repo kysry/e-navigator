@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180917190030) do
+ActiveRecord::Schema.define(version: 20180925165620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "interviews", force: :cascade do |t|
+    t.datetime "interview_date"
+    t.integer "interview_condition"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_interviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -27,4 +36,5 @@ ActiveRecord::Schema.define(version: 20180917190030) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "interviews", "users"
 end

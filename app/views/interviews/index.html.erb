@@ -1,0 +1,34 @@
+<h1>自分の面接日時一覧</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th><div class="text-center">面接開始時間</div></th>
+      <th><div class="text-center">承認状態</div></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  </tbody>
+    <% @interviews.each do |interview| %>
+      <tr>
+        <td><div class="text-center"><%= interview.interview_date.strftime('%Y年%m月%d日 %H:%M')  %></div></td>
+        <td><div class="text-center"><%= interview.interview_condition %></div></td>
+        <td><div class="text-center">
+        <% if current_user?(interview.user) %>
+          <%= link_to "編集", edit_interview_path(interview.id), class: "btn btn-warning" %>
+          <%= link_to "削除", interview, method: :delete,
+                                         data: { confirm: "本当によろしいですか？" },
+                                         class: "btn btn-danger" %>
+        <% end %>
+        </div></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= link_to "面接日時追加", new_interview_path, class: "btn btn-info" %>
+  </div>
+</div>

@@ -45,12 +45,6 @@ class UsersController < ApplicationController
                                   :name, :birthday, :gender, :school)
   end
 
-  def logged_in_user
-    return if logged_in?
-    store_location
-    redirect_to login_url, flash: {danger: "ログインしてください。"}
-  end
-
   def correct_user
     @user = User.find(params[:id])
     return redirect_to(root_url) unless current_user?(@user)

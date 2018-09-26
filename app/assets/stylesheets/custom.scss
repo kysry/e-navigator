@@ -53,7 +53,6 @@ p {
   line-height: 1.7em;
 }
 
-
 /* header */
 
 #logo {
@@ -125,14 +124,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
 
 /* forms */
 
@@ -147,6 +138,8 @@ input {
   height: auto !important;
 }
 
+
+
 #error_explanation {
   color: red;
   ul {
@@ -160,4 +153,9 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.bootstrap-date {
+  display: inline-block;
+  width: auto;
 }
