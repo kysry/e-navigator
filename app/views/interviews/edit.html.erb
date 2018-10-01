@@ -4,10 +4,9 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@interview) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
       <%= f.label :interview_date, "面接日時" %>
-      <%= f.datetime_select :interview_date, :start_year => Time.now.year, :end_year => Time.now.year + 1,
-                                             :minute_step => 30, class: 'form-control', style: 'display:inline-block;width:auto;' %>
+      <%= f.datetime_select :interview_date, { start_year: Time.now.year, end_year: Time.now.year + 1, minute_step: 30 },
+                                             { class: 'form-control datetime_select' } %>
       <%= f.submit "面接日時変更", class: "btn btn-success" %>
     <% end %>
 

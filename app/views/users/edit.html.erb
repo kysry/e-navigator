@@ -9,10 +9,10 @@
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :birthday, "生年月日" %>
-      <%= f.date_select :birthday, start_year: 1988, end_year: 2000, class: 'form-control form_date_select' %>
+      <%= f.date_select :birthday, { start_year: 1988, end_year: 2000 }, { class: 'form-control datetime_select' } %>
 
       <%= f.label :gender, "性別" %>
-      <%= f.select :gender, User.genders.keys, class: 'form-control' %>
+      <%= f.select :gender, User.genders.keys, {}, { class: 'form-control' } %>
 
       <%= f.label :school, "学校名" %>
       <%= f.text_field :school, class: 'form-control' %>

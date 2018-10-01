@@ -15,12 +15,12 @@
         <td><div class="text-center"><%= interview.interview_date.strftime('%Y年%m月%d日 %H:%M')  %></div></td>
         <td><div class="text-center"><%= interview.interview_condition %></div></td>
         <td><div class="text-center">
-        <% if current_user?(interview.user) %>
-          <%= link_to "編集", edit_interview_path(interview.id), class: "btn btn-warning" %>
-          <%= link_to "削除", interview, method: :delete,
+          <% if current_user?(interview.user) %>
+            <%= link_to "編集", edit_interview_path(interview.id), class: "btn btn-warning" %>
+            <%= link_to "削除", interview, method: :delete,
                                          data: { confirm: "本当によろしいですか？" },
                                          class: "btn btn-danger" %>
-        <% end %>
+          <% end %>
         </div></td>
       </tr>
       <% end %>

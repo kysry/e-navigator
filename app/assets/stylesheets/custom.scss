@@ -138,7 +138,9 @@ input {
   height: auto !important;
 }
 
-
+label, input {
+  display: block;
+}
 
 #error_explanation {
   color: red;
@@ -153,4 +155,9 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.datetime_select {
+  display: inline;
+  width: auto;
 }

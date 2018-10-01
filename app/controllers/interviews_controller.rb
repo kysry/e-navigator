@@ -1,5 +1,5 @@
 class InterviewsController < ApplicationController
-  before_action :logged_in_user, only: [:index, :show, :edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :correct_user,   only: [:edit, :destroy]
 
   def index
@@ -17,7 +17,6 @@ class InterviewsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def edit
@@ -31,7 +30,6 @@ class InterviewsController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
