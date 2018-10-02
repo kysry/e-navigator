@@ -11,7 +11,7 @@ class InterviewsController < ApplicationController
   end
 
   def create
-    @interview = current_user.interviews.build(interview_params)
+    @interview = current_user.interviews.create(interview_params)
     if @interview.save
       redirect_to interviews_path, flash: {success: "面接日時が追加されました。"}
     else
