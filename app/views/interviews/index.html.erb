@@ -12,7 +12,7 @@
   <tbody>
     <% @interviews.each do |interview| %>
       <tr>
-        <td><div class="text-center"><%= interview.interview_date.strftime('%Y年%m月%d日 %H:%M')  %></div></td>
+        <td><div class="text-center"><%= interview.datetime %></div></td>
         <td><div class="text-center"><%= interview.interview_condition %></div></td>
         <td><div class="text-center">
           <% if current_user?(interview.user) %>
