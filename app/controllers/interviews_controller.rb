@@ -5,6 +5,7 @@ class InterviewsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @interviews = @user.interviews.all
+    @interview_approval = @user.interviews.find_by(interview_condition: 1)
   end
 
   def new
