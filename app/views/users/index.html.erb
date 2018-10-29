@@ -8,10 +8,12 @@
       <th><div class="text-center">年齢</div></th>
       <th><div class="text-center">性別</div></th>
       <th><div class="text-center">学校名</div></th>
+      <th><div class="text-center">面接日時</div></th>
+      <th><div class="text-center">面接一覧リンク</div></th>
     </tr>
   </thead>
 
-  </tbody>
+  <tbody>
     <% @users.each do |user| %>
       <tr>
         <td><div class="text-center"><%= user.name %></div></td>
@@ -19,6 +21,8 @@
         <td><div class="text-center"><%= user.age %></div></td>
         <td><div class="text-center"><%= user.gender %></div></td>
         <td><div class="text-center"><%= user.school %></div></td>
+        <td><div class="text-center"><%=  %></div></td>
+        <td><div class="text-center"><%=  %></div></td>
       </tr>
      <% end %>
   </tbody>
