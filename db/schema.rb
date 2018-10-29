@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180925165620) do
 
   create_table "interviews", force: :cascade do |t|
     t.datetime "interview_date"
-    t.integer "interview_condition"
+    t.integer "interview_condition", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
