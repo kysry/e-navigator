@@ -3,7 +3,8 @@ class InterviewsController < ApplicationController
   before_action :correct_user,   only: [:edit, :destroy]
 
   def index
-    @interviews = current_user.interviews.all
+    @user = User.find(params[:user_id])
+    @interviews = @user.interviews.all
   end
 
   def new
