@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users do
-    resources :interview
+    resources :interviews do
+      put 'confirm', on: :member
+    end
   end
   resources :interviews
 

@@ -18,12 +18,16 @@
           <% if current_user?(interview.user) %>
             <%= link_to "編集", edit_interview_path(interview.id), class: "btn btn-warning" %>
             <%= link_to "削除", interview, method: :delete,
-                                         data: { confirm: "本当によろしいですか？" },
-                                         class: "btn btn-danger" %>
+                                data: { confirm: "本当によろしいですか？" },
+                                class: "btn btn-danger" %>
+          <% else %>
+            <%= button_to "承認", confirm_user_interview_path(@user.id, interview.id), method: :put,
+                                  params: { interview: { interview_condition: "Approval" } },
+                                  data: { confirm: interview.datetime + "で面接日時を確定してよろしいですか？" },
+                                  class: "btn btn-success" %>
           <% end %>
         </div></td>
       </tr>
-      <% end %>
   </tbody>
 </table>
 
