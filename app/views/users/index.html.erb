@@ -21,8 +21,12 @@
         <td><div class="text-center"><%= user.age %></div></td>
         <td><div class="text-center"><%= user.gender %></div></td>
         <td><div class="text-center"><%= user.school %></div></td>
-        <td><div class="text-center"><%=  %></div></td>
-        <td><div class="text-center"><%=  %></div></td>
+        <td><div class="text-center">
+          <% if user.interviews.find_by(interview_condition: "Approval").present? %>
+            <%= user.interviews.find_by(interview_condition: "Approval").datetime %>
+          <% end %>
+        </div></td>
+        <td><div class="text-center"><%= link_to "面接一覧", user_interviews_path(user) %></div></td>
       </tr>
      <% end %>
   </tbody>
