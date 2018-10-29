@@ -2,7 +2,7 @@ class Interview < ApplicationRecord
   belongs_to :user
   default_scope -> { order(interview_date: :asc) }
   validates :user_id, presence: true
-  validates :interview_date, presence: true
+  validates :interview_date, presence: true, uniqueness: { case_sensitive: false }
   enum interview_condition: { Unconfirmed: 0, Approval: 1, Denial: 2 }
 
   def datetime
