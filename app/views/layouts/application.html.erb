@@ -17,7 +17,7 @@
             <% if logged_in? %>
               <li><%= link_to "ユーザー一覧", users_path %></li>
               <li><%= link_to "マイプロフィール", current_user %></li>
-              <li><%= link_to "自分の面接日時一覧", interviews_path %></li>
+              <li><%= link_to "自分の面接日時一覧", user_interviews_path(current_user) %></li>
               <li><%= link_to "プロフィール作成", edit_user_path(current_user) %></li>
               <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
             <% else %>

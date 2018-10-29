@@ -13,7 +13,7 @@ class InterviewsController < ApplicationController
   def create
     @interview = current_user.interviews.create(interview_params)
     if @interview.save
-      redirect_to interviews_path, flash: {success: "面接日時が追加されました。"}
+      redirect_to user_interviews_path(current_user), flash: {success: "面接日時が追加されました。"}
     else
       render :new
     end
@@ -26,7 +26,7 @@ class InterviewsController < ApplicationController
   def update
     @interview = Interview.find(params[:id])
     if @interview.update_attributes(interview_params)
-      redirect_to interviews_path, flash: {success: "面接日時が更新されました。"}
+      redirect_to user_interviews_path(current_user), flash: {success: "面接日時が更新されました。"}
     else
       render :edit
     end
