@@ -28,7 +28,7 @@ class InterviewsController < ApplicationController
   def update
     @interview = Interview.find(params[:id])
     if @interview.update_attributes(interview_params)
-      redirect_to user_interviews_path(current_user), flash: {success: "面接日時が更新されました。"}
+      redirect_to request.referrer, flash: {success: "面接日時が更新されました。"}
     else
       render :edit
     end
