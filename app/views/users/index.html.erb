@@ -9,7 +9,7 @@
       <th><div class="text-center">性別</div></th>
       <th><div class="text-center">学校名</div></th>
       <th><div class="text-center">面接日時</div></th>
-      <th><div class="text-center">面接一覧リンク</div></th>
+      <th><div class="text-center">面接一覧</div></th>
     </tr>
   </thead>
 
@@ -22,7 +22,7 @@
         <td><div class="text-center"><%= user.gender %></div></td>
         <td><div class="text-center"><%= user.school %></div></td>
         <td><div class="text-center">
-          <% if user.interviews.find_by(interview_condition: "Approval").present? %>
+          <% if user.interviews.where(interview_condition: "Approval").present? %>
             <%= user.interviews.find_by(interview_condition: "Approval").datetime %>
           <% end %>
         </div></td>
