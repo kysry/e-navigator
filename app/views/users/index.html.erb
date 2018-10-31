@@ -22,7 +22,7 @@
         <td><div class="text-center"><%= user.gender %></div></td>
         <td><div class="text-center"><%= user.school %></div></td>
         <td><div class="text-center">
-          <% if user.interviews.where(interview_condition: "approval").present? %>
+          <% if user.interviews.approval.present? %>
             <%= user.interviews.find_by(interview_condition: "approval").datetime %>
           <% end %>
         </div></td>

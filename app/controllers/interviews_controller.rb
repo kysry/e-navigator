@@ -35,12 +35,12 @@ class InterviewsController < ApplicationController
   end
 
   def confirm
-    @user = User.find(params[:user_id])
-    @interview = Interview.find(params[:id])
-    if @interview.update_attributes(interview_params)
-      @denied_interview = @user.interviews.where.not(id: @interview.id)
-      @denied_interview.update_all ['interview_condition = ?', 2]
-      redirect_to user_interviews_path(@user), flash: {success: "面接日時が承認されました。"}
+    user = User.find(params[:user_id])
+    interview = Interview.find(params[:id])
+    if interview.update_attributes(interview_params)
+      denied_interview = user.interviews.where.not(id: interview.id)
+      denied_interview.update_all ['interview_condition = ?', 2]
+      redirect_to user_interviews_path(user), flash: {success: "面接日時が承認されました。"}
     else
       render :edit
     end
