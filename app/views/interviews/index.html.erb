@@ -17,7 +17,7 @@
     <% @interviews.each do |interview| %>
       <tr>
         <td><div class="text-center"><%= interview.datetime %></div></td>
-        <td><div class="text-center"><%= interview.interview_condition %></div></td>
+        <td><div class="text-center"><%= interview.interview_condition_i18n %></div></td>
         <td><div class="text-center">
           <% if current_user?(interview.user) %>
             <%= link_to "編集", edit_interview_path(interview.id), class: "btn btn-warning" %>
