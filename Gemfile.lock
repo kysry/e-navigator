@@ -58,6 +58,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25-x64-mingw32)
@@ -172,6 +174,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.3.7)
   byebug
   coffee-rails (~> 4.2)
+  enum_help
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (~> 1.1.3)

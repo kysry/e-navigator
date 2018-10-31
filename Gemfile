@@ -49,3 +49,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # レイアウトの追加
 gem 'bootstrap-sass', '3.3.7'
+# enumの日本語化
+gem 'enum_help'
