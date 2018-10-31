@@ -25,14 +25,14 @@
                                 data: { confirm: "本当によろしいですか？" },
                                 class: "btn btn-danger" %>
           <% else %>
-            <% if interview.interview_condition == "Approval" %>
+            <% if interview.interview_condition == "approval" %>
               <%= button_to "却下", interview_path(interview.id), method: :put,
-                                  params: { interview: { interview_condition: "Denial" } },
+                                  params: { interview: { interview_condition: "denial" } },
                                   data: { confirm: "承認されている面接日時を却下にします。\n本当によろしいですか？" },
                                   class: "btn btn-dark" %>
             <% else %>
               <%= button_to "承認", confirm_user_interview_path(@user.id, interview.id), method: :put,
-                                    params: { interview: { interview_condition: "Approval" } },
+                                    params: { interview: { interview_condition: "approval" } },
                                     data: { confirm: interview.datetime + "で面接日時を確定してよろしいですか？" },
                                     class: "btn btn-success" %>
             <% end %>
