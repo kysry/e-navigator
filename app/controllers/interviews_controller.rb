@@ -40,7 +40,8 @@ class InterviewsController < ApplicationController
     if interview.update_attributes(interview_params)
       denied_interview = user.interviews.where.not(id: interview.id)
       denied_interview.update_all ['interview_condition = ?', 2]
-      redirect_to user_interviews_path(user), flash: {success: "面接日時が承認されました。"}
+      NotificationMailer.send_approvaldate(user, current_user).deliver
+      redirect_to user_interviews_path(user), flash: {success: "面接日時を承認し、メールを送信しました。"}
     else
       render :edit
     end
