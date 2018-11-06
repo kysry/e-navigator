@@ -9,4 +9,13 @@ class NotificationMailer < ApplicationMailer
       subject: "面接日時が承認されました。"
     )
   end
+
+  def send_checkdate(user, current_user)
+  @user = user
+  @current_user = current_user
+  mail(
+    to: @user.email,
+    subject: "希望面接日時が申請されました。"
+  )
+  end
 end

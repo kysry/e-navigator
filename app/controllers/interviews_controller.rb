@@ -4,7 +4,7 @@ class InterviewsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @users = User.where.not(id: current_user.id) 
+    @users = User.where.not(id: current_user.id)
     @interviews = @user.interviews.all
     @interview_approval = @user.interviews.find_by(interview_condition: 1)
   end
@@ -49,8 +49,10 @@ class InterviewsController < ApplicationController
   end
 
   def check_date
+    @user = User.find(params[:user_id])
+    NotificationMailer.send_checkdate(@user, current_user).deliver
+    redirect_to request.referrer, flash: {success: "メールの送信が完了しました。"}
   end
-
 
   def destroy
     @interview.destroy
