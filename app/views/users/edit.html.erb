@@ -17,15 +17,6 @@
       <%= f.label :school, "学校名" %>
       <%= f.text_field :school, class: 'form-control' %>
 
-      <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password, "パスワード(6文字以上必要です。)" %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "パスワードをもう一度入力してください。" %>
-      <%= f.password_field :password_confirmation %>
-
       <%= f.submit "修正", class: "btn btn-primary" %>
     <% end %>
   </div>
