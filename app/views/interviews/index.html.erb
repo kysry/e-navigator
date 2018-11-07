@@ -46,7 +46,7 @@
 <% if current_user?(@user) %>
   <%= link_to "面接日時追加", new_interview_path, class: "btn btn-info" %>
   <%= form_tag('/interviews/check_date', method: :post) do %>
-  <%= select_tag 'user_id', options_for_select(@users.pluck(:name, :id)), { class: 'form-control datetime_select'} %>
-  <%= submit_tag "申請メールを送信", class: "btn btn-primary datetime_select" %>
+    <%= select_tag 'user_id', options_for_select(@users.pluck(:name, :id)), { class: 'form-control datetime_select'} %>
+    <%= submit_tag "申請メールを送信", class: "btn btn-primary datetime_select" %>
   <% end %>
 <% end %>

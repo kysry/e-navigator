@@ -1,8 +1,8 @@
 class NotificationMailer < ApplicationMailer
-  def send_approvaldate(user, current_user)
+  def send_approval_date(user, current_user)
     @user = user
     @current_user = current_user
-    @interview = @user.interviews.find_by(interview_condition: 1)
+    @interview = @user.interviews.approval.first
     mail(
       to: @user.email,
       cc: @current_user.email,
@@ -10,12 +10,12 @@ class NotificationMailer < ApplicationMailer
     )
   end
 
-  def send_checkdate(user, current_user)
-  @user = user
-  @current_user = current_user
-  mail(
-    to: @user.email,
-    subject: "希望面接日時が申請されました。"
-  )
+  def send_check_date(user, current_user)
+    @user = user
+    @current_user = current_user
+    mail(
+      to: @user.email,
+      subject: "希望面接日時が申請されました。"
+    )
   end
 end

@@ -23,7 +23,7 @@
         <td><div class="text-center"><%= user.school %></div></td>
         <td><div class="text-center">
           <% if user.interviews.approval.present? %>
-            <%= user.interviews.find_by(interview_condition: "approval").datetime %>
+            <%= user.interviews.approval.first.datetime %>
           <% end %>
         </div></td>
         <td><div class="text-center"><%= link_to "面接一覧", user_interviews_path(user) %></div></td>

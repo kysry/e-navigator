@@ -6,7 +6,7 @@ class InterviewsController < ApplicationController
     @user = User.find(params[:user_id])
     @users = User.where.not(id: current_user.id)
     @interviews = @user.interviews.all
-    @interview_approval = @user.interviews.find_by(interview_condition: 1)
+    @interview_approval = @user.interviews.approval.first
   end
 
   def new
@@ -41,7 +41,7 @@ class InterviewsController < ApplicationController
     if interview.update_attributes(interview_params)
       denied_interview = user.interviews.where.not(id: interview.id)
       denied_interview.update_all ['interview_condition = ?', 2]
-      NotificationMailer.send_approvaldate(user, current_user).deliver
+      NotificationMailer.send_approval_date(user, current_user).deliver
       redirect_to user_interviews_path(user), flash: {success: "面接日時を承認し、メールを送信しました。"}
     else
       render :edit
@@ -50,7 +50,7 @@ class InterviewsController < ApplicationController
 
   def check_date
     @user = User.find(params[:user_id])
-    NotificationMailer.send_checkdate(@user, current_user).deliver
+    NotificationMailer.send_check_date(@user, current_user).deliver
     redirect_to request.referrer, flash: {success: "メールの送信が完了しました。"}
   end
 
