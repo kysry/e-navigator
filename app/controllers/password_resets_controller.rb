@@ -1,4 +1,4 @@
-class AccountResetsController < ApplicationController
+class PasswordResetsController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 
@@ -8,16 +8,16 @@ class AccountResetsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     if @user.update_attributes(user_params)
-      redirect_to users_path(current_user), flash: {success: "プロフィールが更新されました。"}
+      redirect_to users_path(current_user), flash: {success: "パスワードが変更されました。"}
     else
-      redirect_to edit_user_account_reset_path(current_user)
+      render :edit
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation)
   end
 
   def correct_user

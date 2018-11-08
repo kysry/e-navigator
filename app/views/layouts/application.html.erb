@@ -18,7 +18,7 @@
               <li><%= link_to "ユーザー一覧", users_path %></li>
               <li><%= link_to "自分の面接日時一覧", user_interviews_path(current_user) %></li>
               <li><%= link_to "プロフィール修正", edit_user_path(current_user) %></li>
-              <li><%= link_to "メールアドレス・パスワード変更", edit_user_account_resets_path(current_user) %></li>
+              <li><%= link_to "パスワード変更", edit_user_password_resets_path(current_user) %></li>
               <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "ログイン", login_path %></li>

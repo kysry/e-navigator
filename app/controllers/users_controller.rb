@@ -26,7 +26,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    @user.attributes = user_params
+    if @user.save(context: :update_without_password)
       redirect_to users_path(current_user), flash: {success: "プロフィールが更新されました。"}
     else
       render :edit

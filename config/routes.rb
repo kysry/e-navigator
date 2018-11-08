@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :interviews do
       put 'confirm', on: :member
     end
-    resource :account_resets, only: [:edit, :update]
+    resource :password_resets, only: [:edit, :update]
   end
   resources :interviews do
     post 'check_date', on: :collection
