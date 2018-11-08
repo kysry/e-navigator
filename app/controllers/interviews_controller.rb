@@ -29,7 +29,7 @@ class InterviewsController < ApplicationController
   def update
     @interview = Interview.find(params[:id])
     if @interview.update_attributes(interview_params)
-      redirect_to request.referrer, flash: {success: "面接日時が更新されました。"}
+      redirect_to user_interviews_path(current_user), flash: {success: "面接日時が更新されました。"}
     else
       render :edit
     end
@@ -51,12 +51,12 @@ class InterviewsController < ApplicationController
   def check_date
     @user = User.find(params[:user_id])
     NotificationMailer.send_check_date(@user, current_user).deliver
-    redirect_to request.referrer, flash: {success: "メールの送信が完了しました。"}
+    redirect_to user_interviews_path(current_user), flash: {success: "メールの送信が完了しました。"}
   end
 
   def destroy
     @interview.destroy
-    redirect_to request.referrer || root_url, flash: {success: "削除されました。"}
+    redirect_to user_interviews_path(current_user) || root_url, flash: {success: "削除されました。"}
   end
 
   private
