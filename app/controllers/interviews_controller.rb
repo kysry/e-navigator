@@ -4,8 +4,9 @@ class InterviewsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
+    @users = User.where.not(id: current_user.id)
     @interviews = @user.interviews.all
-    @interview_approval = @user.interviews.find_by(interview_condition: 1)
+    @interview_approval = @user.interviews.approval.first
   end
 
   def new
@@ -28,7 +29,7 @@ class InterviewsController < ApplicationController
   def update
     @interview = Interview.find(params[:id])
     if @interview.update_attributes(interview_params)
-      redirect_to request.referrer, flash: {success: "面接日時が更新されました。"}
+      redirect_to user_interviews_path(current_user), flash: {success: "面接日時が更新されました。"}
     else
       render :edit
     end
@@ -40,16 +41,22 @@ class InterviewsController < ApplicationController
     if interview.update_attributes(interview_params)
       denied_interview = user.interviews.where.not(id: interview.id)
       denied_interview.update_all ['interview_condition = ?', 2]
-      redirect_to user_interviews_path(user), flash: {success: "面接日時が承認されました。"}
+      NotificationMailer.send_approval_date(user, current_user).deliver
+      redirect_to user_interviews_path(user), flash: {success: "面接日時を承認し、メールを送信しました。"}
     else
       render :edit
     end
   end
 
+  def check_date
+    @user = User.find(params[:user_id])
+    NotificationMailer.send_check_date(@user, current_user).deliver
+    redirect_to user_interviews_path(current_user), flash: {success: "メールの送信が完了しました。"}
+  end
 
   def destroy
     @interview.destroy
-    redirect_to request.referrer || root_url, flash: {success: "削除されました。"}
+    redirect_to user_interviews_path(current_user) || root_url, flash: {success: "削除されました。"}
   end
 
   private

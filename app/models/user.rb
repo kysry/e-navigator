@@ -6,7 +6,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, on: :update_without_password, allow_blank: true
   enum gender: { male: 0, female: 1 }
 
   def age

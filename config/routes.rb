@@ -9,8 +9,10 @@ Rails.application.routes.draw do
     resources :interviews do
       put 'confirm', on: :member
     end
+    resource :password_resets, only: [:edit, :update]
   end
-  resources :interviews
-
+  resources :interviews do
+    post 'check_date', on: :collection
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -11,14 +11,14 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <%= link_to "e-navigator", current_user, id: "logo" %>
+        <%= link_to "e-navigator", users_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <% if logged_in? %>
               <li><%= link_to "ユーザー一覧", users_path %></li>
-              <li><%= link_to "マイプロフィール", current_user %></li>
               <li><%= link_to "自分の面接日時一覧", user_interviews_path(current_user) %></li>
-              <li><%= link_to "プロフィール作成", edit_user_path(current_user) %></li>
+              <li><%= link_to "プロフィール修正", edit_user_path(current_user) %></li>
+              <li><%= link_to "パスワード変更", edit_user_password_resets_path(current_user) %></li>
               <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "ログイン", login_path %></li>

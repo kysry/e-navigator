@@ -6,10 +6,6 @@ class UsersController < ApplicationController
     @users = User.where.not(id: current_user.id)
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def new
     @user = User.new
   end
@@ -18,8 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash.now[:success] = "ユーザー登録が完了しました。続いてプロフィールを作成してください。"
-      render :edit
+      redirect_to users_path(current_user), flash: {success: "ユーザー登録が完了しました。"}
     else
       render :new
     end
@@ -31,8 +26,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      redirect_to @user, flash: {success: "プロフィールが作成されました。"}
+    @user.attributes = user_params
+    if @user.save(context: :update_without_password)
+      redirect_to users_path(current_user), flash: {success: "プロフィールが更新されました。"}
     else
       render :edit
     end
